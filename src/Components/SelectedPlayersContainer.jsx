@@ -20,9 +20,6 @@ import './Styles.scss';
 // };
 
 const SelectedPlayersContainer = ({ selectedPlayers, handleRemovePlayer }) => {
-    const overallRatingSum = selectedPlayers.reduce((sum, player) => sum + player.overall_rating, 0);
-    const overallRatingAvg = overallRatingSum / selectedPlayers.length;
-
     return (
         <div className="selected-players-container">
             {selectedPlayers.length > 0 && <h2>Jugadores seleccionados</h2>}

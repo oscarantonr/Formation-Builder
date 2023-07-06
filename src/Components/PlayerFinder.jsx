@@ -7,7 +7,7 @@ import Formations from './Formations';
 const PlayerFinder = () => {
     const [data, setData] = useState(null);
     const [keyword, setKeyword] = useState('');
-    const [selectedPlayer, setSelectedPlayer] = useState(null);
+    const [selectedPlayer,] = useState(null);
     const [selectedPlayers, setSelectedPlayers] = useState([]);
     const [overallRatingSum, setOverallRatingSum] = useState(0);
     const dropdownRef = useRef(null);
@@ -72,15 +72,7 @@ const PlayerFinder = () => {
         );
     };
 
-    const handlePlayerSelect = (player) => {
-        setSelectedPlayer(player);
-    };
-
     const handleFormationSelect = (formation) => {
-        setSelectedFormation(formation);
-    };
-
-    const handleFormationChange = (formation) => {
         setSelectedFormation(formation);
     };
 

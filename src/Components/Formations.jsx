@@ -5,7 +5,7 @@ import OverallRating from './OverallRating';
 
 const Formations = ({ formation }) => {
   const [selectedSlot, setSelectedSlot] = useState(null);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [, setSelectedPlayer] = useState(null);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [previousButton, setPreviousButton] = useState(null);
   const buttonRefs = useRef([]); // Referencias a todos los botones
