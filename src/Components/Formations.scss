@@ -1,0 +1,110 @@
+.squad-builder {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.squad {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.squad-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.squad-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Estilos para formaciones específicas */
+
+/* Formación 4-4-2 */
+.squad-row:nth-child(1) .squad-slot:nth-child(1),
+.squad-row:nth-child(1) .squad-slot:nth-child(4) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Formación 4-3-3 */
+.squad-row:nth-child(1) .squad-slot:nth-child(1),
+.squad-row:nth-child(1) .squad-slot:nth-child(4) {
+  margin-left: auto;
+  margin-right: auto;
+}
+.squad-row:nth-child(2) .squad-slot:nth-child(2) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Formación 3-5-2 */
+.squad-row:nth-child(1) .squad-slot:nth-child(2) {
+  margin-left: auto;
+  margin-right: auto;
+}
+.squad-row:nth-child(2) .squad-slot:nth-child(2),
+.squad-row:nth-child(2) .squad-slot:nth-child(3) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Formación 3-4-3 */
+.squad-row:nth-child(1) .squad-slot:nth-child(2) {
+  margin-left: auto;
+  margin-right: auto;
+}
+.squad-row:nth-child(2) .squad-slot:nth-child(2) {
+  margin-left: auto;
+  margin-right: auto;
+}
+.squad-row:nth-child(3) .squad-slot:nth-child(2) {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.formations-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.formations-select h2,
+.formations-select select {
+  margin-bottom: 10%;
+}
+
+.button-selected {
+  border: 2px solid #3a6cb4;
+  box-shadow: 0 0 5px #3a6cb4;
+}
+
+.img-player{
+  width: 50px;
+  height: 50px;
+  z-index: -1;
+}
+
+.formation-data{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    gap: 20px;
+}
