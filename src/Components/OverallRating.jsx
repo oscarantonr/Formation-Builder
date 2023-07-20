@@ -9,8 +9,7 @@ const OverallRating = ({ data }) => {
 
     return (
         <div>
-            <h2>Overall Rating:</h2>
-            <p>Total Overall Rating: {getTotalOverallRating()}</p>
+            <h2>Overall Rating: {getTotalOverallRating()}</h2>
         </div>
     );
 };

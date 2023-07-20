@@ -24,59 +24,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   border: 1px solid #ccc;
   margin-right: 10px;
   background-color: transparent;
   cursor: pointer;
 }
-
-/* Estilos para formaciones específicas */
-
-/* Formación 4-4-2 */
-.squad-row:nth-child(1) .squad-slot:nth-child(1),
-.squad-row:nth-child(1) .squad-slot:nth-child(4) {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Formación 4-3-3 */
-.squad-row:nth-child(1) .squad-slot:nth-child(1),
-.squad-row:nth-child(1) .squad-slot:nth-child(4) {
-  margin-left: auto;
-  margin-right: auto;
-}
-.squad-row:nth-child(2) .squad-slot:nth-child(2) {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Formación 3-5-2 */
-.squad-row:nth-child(1) .squad-slot:nth-child(2) {
-  margin-left: auto;
-  margin-right: auto;
-}
-.squad-row:nth-child(2) .squad-slot:nth-child(2),
-.squad-row:nth-child(2) .squad-slot:nth-child(3) {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Formación 3-4-3 */
-.squad-row:nth-child(1) .squad-slot:nth-child(2) {
-  margin-left: auto;
-  margin-right: auto;
-}
-.squad-row:nth-child(2) .squad-slot:nth-child(2) {
-  margin-left: auto;
-  margin-right: auto;
-}
-.squad-row:nth-child(3) .squad-slot:nth-child(2) {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 
 .formations-select {
   display: flex;
@@ -98,13 +52,27 @@
 }
 
 .img-player{
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
   z-index: -1;
 }
 
-.formation-data{
-    display: grid;
-    grid-template-columns: 70% 30%;
-    gap: 20px;
+.formation-data {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.formations-container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .formation-data {
+    flex-direction: row;
+  }
+
+  .formations-container {
+    width: 50%;
+  }
 }

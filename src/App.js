@@ -1,8 +1,8 @@
 import './App.css';
 import './Components/Header.scss';
-import React, { useState } from 'react'
+import './Components/Styles.scss';
+import React, { useState } from 'react';
 import Formations from './Components/Formations';
-import PlayerFinder from './Components/PlayerFinder';
 import FormationsSelect from './Components/FormationsSelect';
 
 const App = () => {

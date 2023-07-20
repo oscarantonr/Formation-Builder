@@ -36,6 +36,7 @@ const SearchInput = ({ onPlayerSelect }) => {
     return (
         <div className="search-container">
             <input
+                autoFocus
                 className="search-input"
                 type="text"
                 value={keyword}

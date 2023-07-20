@@ -87,11 +87,13 @@ const Formations = ({ formation }) => {
     return imageUrl;
   };
 
-
+  const formationsContainerStyles = {
+    width: data.length > 0 ? '50%' : '100%',
+  };
 
   return (
     <div className='formation-data'>
-      <div className="formations-container">
+      <div className="formations-container" style={formationsContainerStyles}>
         <h2 className='formation-number'>{formation.name}</h2>
         {initializeButtonRefs()} {/* Inicializar las referencias a los botones */}
         {formation.rows.map((numSlots, row) => (
@@ -118,9 +120,9 @@ const Formations = ({ formation }) => {
         ))}
         {showSearchInput && <SearchInput onPlayerSelect={handlePlayerSelect} />}
       </div>
-      <div className='players-table'>
-        {data.length > 0 && <PlayerData data={data} />}
+      <div className={data.length > 0 ? 'players-table' : 'players-table hidden'}>
         {data.length === 11 && <OverallRating data={data} />}
+        {data.length > 0 && <PlayerData data={data} />}
       </div>
     </div>
   );
