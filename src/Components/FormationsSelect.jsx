@@ -1,12 +1,8 @@
 import React from 'react';
 import './Formations.scss';
+import jsonData from '../json/formations.json';
 
-const formations = [
-  { name: '4-4-2', rows: [1, 4, 4, 2] },
-  { name: '4-3-3', rows: [1, 4, 3, 3] },
-  { name: '3-5-2', rows: [1, 3, 5, 2] },
-  { name: '3-4-3', rows: [1, 3, 4, 3] }
-];
+const formations = jsonData.values; // Utiliza los valores del JSON tratado.
 
 const FormationsSelect = ({ onFormationSelect }) => {
   const handleFormationChange = (event) => {
@@ -17,7 +13,6 @@ const FormationsSelect = ({ onFormationSelect }) => {
 
   return (
     <div className="formations-select">
-      <h2>Select Formation:</h2>
       <select onChange={handleFormationChange}>
         <option value="">Select a formation</option>
         {formations.map((formation) => (

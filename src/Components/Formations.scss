@@ -4,6 +4,55 @@
   height: 100vh;
 }
 
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  // color: rgb(37, 40, 42);
+  color: rgb(37, 40, 42);
+  // background-color: #2c3e50;
+  background-color: rgb(244, 244, 244);
+  background-image: none;
+  cursor: pointer;
+font-size: large;
+font-family: 'LaLiga';
+
+}
+
+.formations-select {
+  position: relative;
+  display: flex;
+  width: 14em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+  option{
+    font-family: 'LaLiga';
+  }
+}
+
+
+.formations-select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  // background-color: #2F4858;
+  background-color: rgb(244, 244, 244);
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+
 .squad {
   display: flex;
   flex-direction: column;
@@ -21,29 +70,17 @@
 }
 
 .squad-slot {
+  font-family: 'LaLiga';
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 65px;
-  height: 65px;
+  width: 90px;
+  height: 90px;
   border: 1px solid #ccc;
   margin-right: 10px;
   background-color: transparent;
   cursor: pointer;
-}
-
-.formations-select {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100%;
-}
-
-.formations-select h2,
-.formations-select select {
-  margin-bottom: 10%;
 }
 
 .button-selected {
@@ -52,8 +89,8 @@
 }
 
 .img-player{
-  width: 65px;
-  height: 65px;
+  width: 90px;
+  height: 90px;
   z-index: -1;
 }
 
@@ -63,16 +100,15 @@
   width: 80%;
 }
 
-.formations-container {
-  width: 100%;
-}
-
 @media (min-width: 768px) {
   .formation-data {
     flex-direction: row;
   }
+}
 
-  .formations-container {
-    width: 50%;
+@media (max-width: 768px) {
+  .squad-slot, .img-player{
+    width: 80px;
+    height: 80px;
   }
 }

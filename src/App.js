@@ -14,14 +14,23 @@ const App = () => {
 
   return (
     <div>
-      <header className='header'>
-        Squad Builder
+      <header className='menu'>
+        <div className='menu-title'>
+          Squad Builder
+        </div>
+        <div className="menu-formation">
+          <FormationsSelect onFormationSelect={handleFormationSelect} />
+        </div>
       </header>
       <main >
         <div className="component-container">
-          <FormationsSelect onFormationSelect={handleFormationSelect} />
-        </div>
-        <div className="component-container">
+          {!selectedFormation &&
+            <div className='titles'>
+              <div className='main-title'>Squad Builder</div>
+              <div className='second-title'>Create your favorite lineup.</div>
+              <div className='third-title'>Data used in EA Sports FIFA 23</div>
+            </div>
+          }
           {selectedFormation && <Formations formation={selectedFormation} />}
         </div>
       </main>

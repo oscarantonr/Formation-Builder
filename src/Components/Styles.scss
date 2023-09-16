@@ -4,6 +4,29 @@
   align-items: center;
 }
 
+.menu{
+  padding: 1em;
+  margin-bottom: 3em;
+  position: relative;
+  overflow: hidden;
+  // background-color: #33658A;
+  background-color: rgb(255, 75, 68);
+  // color: #ffffff;
+  .menu-title{
+    color:rgb(37, 40, 42);
+    font-family: "LaLiga";
+    font-size: 24px;
+  }
+}
+
+.menu-formation {
+  float: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .input-container input {
   width: 100%;
 }
@@ -32,7 +55,27 @@
     text-overflow: ellipsis;
   }
 
+  .titles{
+    margin-top: 10%;
+    .main-title{
+      color:rgb(37, 40, 42);
+  font-family: "LaLiga";
+  word-break: break-all;
+  width: 3em;
+  font-size: 110px;
+}
 
+.second-title{
+  color:rgb(37, 40, 42);
+  font-family: "LaLiga";
+  font-size: 23px;
+}
+.third-title{
+  color:rgb(37, 40, 42);
+  font-family: "LaLiga";
+  font-size: 23px;
+}
+}
 
   .selected-player-container {
     display: flex;
@@ -120,46 +163,108 @@
   }
   
   .search-container {
-    position: relative;
-    width: 80%;
-    .search-input {
-      width: 80%;
-      margin: 0 auto;
-      display: flex;
-      position: inherit;
-      left: 10%;
-    }
+    // width: 30%;
+    // position: relative;
+    position: inherit;
+    height: 30px;
+    // overflow: hidden;
   }
   
+  .search-container input {
+    // width: 100%;
+    height: 100%;
+    // color: #fff;
+    // padding-top: 20px;
+    border: none;
+    border-bottom: 1px solid rgb(0, 0, 27);
+    background-color: #ffffff;
+    position: inherit;
+
+  }
+  .search-container label {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    // border-bottom: 1px solid white;
+  }
+  .search-container label::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    // border-bottom: 3px solid #ffffff;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+  }
+  
+  .content-name {
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+  }
+  .search-container input:focus {
+    outline: none;
+  }
+  .search-container input:focus + .label-name .content-name,
+  .search-container input:valid + .label-name .content-name {
+    transform: translateY(-150%);
+    font-size: 14px;
+    left: 0px;
+    color: rgb(0, 0, 27);
+  }
+  .search-container input:focus + .label-name::after,
+  .search-container input:valid + .label-name::after {
+    transform: translateX(0%);
+  }
+    
   .dropdown-container {
     position: inherit;
-    left: 10%;
-    width: 80%;
     z-index: 1;
     margin: 0 auto;
+    max-height: 300px;
+    overflow-y: auto;
   }
   
   .formation-number {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "LaLiga";
+    font-size: 2rem;
   }
   
 .component-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px; /* Espacio entre los componentes */
+  margin-bottom: 20px;
+}
+
+.stats{
+  h2{
+    font-family: "LaLiga";
+    color:rgb(37, 40, 42);
+  }
+  margin-bottom: 5%;
+  .overall-stats{
+    color:rgb(37, 40, 42);
+    font-family: "LaLiga";
+    font-size: larger;
+  }
 }
 
 @media (max-width: 768px) {
   .component-container {
     flex-direction: column;
   }
-}
-
-.players-table {
-  width: 50%;
 }
 
 .players-table.hidden {
@@ -173,5 +278,34 @@
 @media (min-width: 768px) {
   .players-table {
     width: 50%;
+  }
+
+  .formations-container {
+    width: 100%;
+  }
+
+  .formations-container.half-screen {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu{
+    padding: 2em;
+    .menu-title{
+      display: none;
+    }
+  }
+  .players-table {
+    width: 100%;
+  }
+
+  .formations-container {
+    width: 100%;
+  }
+
+  .formations-container.half-screen{
+    width: 100%;
+    margin-bottom: 25%;
   }
 }

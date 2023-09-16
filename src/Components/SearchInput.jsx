@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
 const SearchInput = ({ onPlayerSelect }) => {
@@ -9,23 +9,25 @@ const SearchInput = ({ onPlayerSelect }) => {
     const handleKeywordChange = (event) => {
         const newKeyword = event.target.value;
         setKeyword(newKeyword);
+    };
 
-        if (newKeyword.length > 2) {
-            fetchData(newKeyword);
+    useEffect(() => {
+        if (keyword.length > 2) {
+            const fetchPlayerData = async () => {
+                try {
+                    const url = `https://ratings-api.ea.com/v2/entities/fifa-23-ratings?sort=ranking%3AASC&limit=40&filter=((fullNameForSearch%3A*${keyword}*%20OR%20commonname%3A*${keyword}*))`;
+                    const response = await axios.get(url);
+                    setData(response.data.docs);
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            };
+
+            fetchPlayerData();
         } else {
             setData(null);
         }
-    };
-
-    const fetchData = async (keyword) => {
-        try {
-            const url = `https://ratings-api.ea.com/v2/entities/fifa-23-ratings?sort=ranking%3AASC&limit=40&filter=((fullNameForSearch%3A*${keyword}*%20OR%20commonname%3A*${keyword}*))`;
-            const response = await axios.get(url);
-            setData(response.data.docs);
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    };
+    }, [keyword]);
 
     const handlePlayerClick = (player) => {
         setKeyword('');
@@ -41,9 +43,13 @@ const SearchInput = ({ onPlayerSelect }) => {
                 type="text"
                 value={keyword}
                 onChange={handleKeywordChange}
-                placeholder="Enter a player's name"
                 ref={searchInputRef}
+                name="text"
+                required
             />
+            <label className='label-name'>
+                <span className="content-name">Player's name</span>
+            </label>
             {data && (
                 <div className="dropdown-container">
                     {data.slice(0, 10).map((player) => (
