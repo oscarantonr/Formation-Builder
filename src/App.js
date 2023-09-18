@@ -28,7 +28,7 @@ const App = () => {
             <div className='titles'>
               <div className='main-title'>Squad Builder</div>
               <div className='second-title'>Create your favorite lineup.</div>
-              <div className='third-title'>Data used in EA Sports FIFA 23</div>
+              <div className='third-title'>Data used in EA Sports FC 24</div>
             </div>
           }
           {selectedFormation && <Formations formation={selectedFormation} />}

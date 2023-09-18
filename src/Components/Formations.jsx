@@ -7,7 +7,7 @@ import './Formations.scss';
 
 const Formations = ({ formation }) => {
   const [selectedSlot, setSelectedSlot] = useState(null);
-  // const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [data, setData] = useState([]);
   const contenedorRef = useRef(null);
@@ -33,7 +33,7 @@ const Formations = ({ formation }) => {
       const slotId = `${row}-${index}`;
       const buttonId = `${row}-${index}`;
       const buttonData = data.find((item) => item.previousButton === buttonId);
-      const buttonImage = buttonData && buttonData.playerId ? <img className='img-player' src={getPlayerImageUrl(buttonData.playerId)} alt="Imagen" /> : "";
+      const buttonImage = buttonData && buttonData.player.id ? <img className='img-player' src={getPlayerImageUrl(buttonData.player.id)} alt="Imagen" /> : "";
       const buttonText = !buttonImage && buttonData ? (buttonData.player.commonname || buttonData.player.fullNameForSearch) : getButtonText(row, index);
 
       return (
@@ -51,23 +51,26 @@ const Formations = ({ formation }) => {
   };
 
   const handlePlayerSelect = (player) => {
-    // setSelectedPlayer(player);
+    setSelectedPlayer(player);
     const buttonId = previousButton;
     const newData = {
       player: player,
-      playerId: player.primaryKey,
+      playerId: player.id,
       previousButton: buttonId,
-      firstnameId: player.firstnameid
     };
 
-    const existingIndex = data.findIndex((item) => item.playerId === player.primaryKey);
+    // Busca si el jugador ya existe en el estado
+    const existingIndex = data.findIndex((item) => item.previousButton === buttonId);
+
     if (existingIndex !== -1) {
+      // Si existe, reemplaza el jugador anterior con el nuevo
       setData((prevData) => {
         const newDataArray = [...prevData];
-        newDataArray.splice(existingIndex, 1);
-        return [...newDataArray, newData];
+        newDataArray[existingIndex] = newData;
+        return newDataArray;
       });
     } else {
+      // Si no existe, simplemente agrega el nuevo jugador
       setData((prevData) => [...prevData, newData]);
     }
 
@@ -79,8 +82,9 @@ const Formations = ({ formation }) => {
       }
     }
 
-    setShowSearchInput(false); // Ocultar el SearchInput después de seleccionar el jugador
+    setShowSearchInput(false);
   };
+
 
   const handleButtonClick = (row, index) => {
     const buttonId = `${row}-${index}`;
@@ -90,7 +94,7 @@ const Formations = ({ formation }) => {
 
   const handleSlotClick = (row, index) => {
     setSelectedSlot({ row, index });
-    // setSelectedPlayer(null);
+    setSelectedPlayer(null);
     setShowSearchInput(true);
   };
 
@@ -113,8 +117,7 @@ const Formations = ({ formation }) => {
   };
 
   const getPlayerImageUrl = (primaryKey) => {
-    const baseUrl = 'https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-23/ratings/common/player-small-portraits/';
-    const imageUrl = baseUrl + primaryKey + '.png';
+    const imageUrl = 'https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-shields/en/' + primaryKey + '.png.adapt.100w.png'
     return imageUrl;
   };
 
