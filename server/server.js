@@ -1,22 +1,19 @@
-const PORT = 3001;
+const port = process.env.PORT || 3001;
 const express = require("express");
+const app = express();
 const cors = require("cors");
 const axios = require("axios");
 
 require("dotenv").config();
 
-const app = express();
 
 app.use(cors());
 
-// Ruta para manejar la solicitud con un parámetro dinámico en la cadena de consulta
 app.get("/rating", (req, res) => {
-    // Obtén el parámetro de la cadena de consulta llamado "search"
     const {
         search
     } = req.query;
 
-    // Verifica si se proporciona un valor para "search"
     if (!search) {
         return res.status(400).json({
             error: "El parámetro 'search' es requerido."
@@ -41,6 +38,6 @@ app.get("/rating", (req, res) => {
         });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
