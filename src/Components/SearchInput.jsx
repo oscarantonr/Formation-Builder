@@ -15,7 +15,7 @@ const SearchInput = ({ onPlayerSelect }) => {
         if (keyword.length > 2) {
             const fetchPlayerData = async () => {
                 try {
-                    const url = `https://squad-builder.vercel.app/rating?search=${keyword}`
+                    const url = `https://squad-api.vercel.app/rating?search=${keyword}`
                     const response = await axios.get(url);
                     console.log(response.data.items);
                     setData(response.data.items);
