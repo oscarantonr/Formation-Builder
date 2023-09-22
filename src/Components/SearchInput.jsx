@@ -17,7 +17,6 @@ const SearchInput = ({ onPlayerSelect }) => {
                 try {
                     const url = `https://squad-api.vercel.app/rating?search=${keyword}`
                     const response = await axios.get(url);
-                    console.log(response.data.items);
                     setData(response.data.items);
                 } catch (error) {
                     console.error('Error:', error);
