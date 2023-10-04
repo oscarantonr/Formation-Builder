@@ -4,10 +4,10 @@ As I am a beginner in React.js and wanted to motivate myself a bit in my first p
 While trying different formations while playing FIFA 23, I wondered if it would be difficult to create something similar and faster than the EA SPORTS search engine.
 
 ## What is it?
-![HomePage]("Home page")
-![alt text](http://url/to/img.png)
 It's very simple. We choose a formation from the list we have in the menu, and it will create the template with eleven spaces to fill. 
 In these spaces, we can click to perform a search and find the player we want.
+![alt text](https://github.com/oscarantonr/squad-builder/blob/master/public/MD1.JPG)
+![alt text](https://github.com/oscarantonr/squad-builder/blob/master/public/MD2.JPG)
 
 ### `npm start`
 
