@@ -33,7 +33,7 @@ const Formations = ({ formation }) => {
       const slotId = `${row}-${index}`;
       const buttonId = `${row}-${index}`;
       const buttonData = data.find((item) => item.previousButton === buttonId);
-      const buttonImage = buttonData && buttonData.player.id ? <img className='img-player' src={getPlayerImageUrl(buttonData.player.id)} alt="Imagen" /> : "";
+      const buttonImage = buttonData && buttonData.playerId ? <img className='img-player' src={getPlayerImageUrl(buttonData.playerId)} alt="Imagen" /> : "";
       const buttonText = !buttonImage && buttonData ? (buttonData.player.commonname || buttonData.player.fullNameForSearch) : getButtonText(row, index);
 
       return (
@@ -55,12 +55,12 @@ const Formations = ({ formation }) => {
     const buttonId = previousButton;
     const newData = {
       player: player,
-      playerId: player.id,
+      playerId: player.primaryKey,
       previousButton: buttonId,
     };
 
     // Busca si el jugador ya existe en el estado
-    const existingIndex = data.findIndex((item) => item.previousButton === buttonId);
+    const existingIndex = data.findIndex((item) => item.playerId === newData.playerId);
 
     if (existingIndex !== -1) {
       // Si existe, reemplaza el jugador anterior con el nuevo
@@ -117,7 +117,8 @@ const Formations = ({ formation }) => {
   };
 
   const getPlayerImageUrl = (primaryKey) => {
-    const imageUrl = 'https://media.contentapi.ea.com/content/dam/ea/easfc/fc-24/ratings/common/full/player-shields/en/' + primaryKey + '.png.adapt.100w.png'
+    const baseUrl = 'https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-23/ratings/common/player-small-portraits/';
+    const imageUrl = baseUrl + primaryKey + '.png';
     return imageUrl;
   };
 

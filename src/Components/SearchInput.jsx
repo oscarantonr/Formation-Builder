@@ -15,9 +15,9 @@ const SearchInput = ({ onPlayerSelect }) => {
         if (keyword.length > 2) {
             const fetchPlayerData = async () => {
                 try {
-                    const url = `https://squad-api.vercel.app/rating?search=${keyword}`
+                    const url = `https://ratings-api.ea.com/v2/entities/fifa-23-ratings?sort=ranking%3AASC&limit=40&filter=((fullNameForSearch%3A*${keyword}*%20OR%20commonname%3A*${keyword}*))`;
                     const response = await axios.get(url);
-                    setData(response.data.items);
+                    setData(response.data.docs);
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -59,8 +59,8 @@ const SearchInput = ({ onPlayerSelect }) => {
                             onClick={() => handlePlayerClick(player)}
                         >
                             <div className="dropdown-item-player">
-                                <div className="player-name">{player.firstName + " " + player.lastName}</div>
-                                <div className="player-overall">{player.overallRating}</div>
+                                <div className="player-name">{player.fullNameForSearch}</div>
+                                <div className="player-overall">{player.overall_rating}</div>
                             </div>
                         </div>
                     ))}

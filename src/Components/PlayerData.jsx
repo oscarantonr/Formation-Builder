@@ -5,25 +5,25 @@ const PlayerData = ({ data, onPlayerDelete, onAllPlayersDelete }) => {
     const today = new Date();
 
     const renderPlayerRow = (item, index) => {
-        const { birthdate, firstName, lastName, overallRating } = item.player;
+        const { birthdate, playerjerseyname, overall_rating } = item.player;
         const age = today.getFullYear() - new Date(birthdate).getFullYear();
-        const fullName = firstName ? firstName + " " + lastName : `Player ${index + 1}`;
+        const fullName = playerjerseyname || `Player ${index + 1}`;
 
         return (
             <tr key={index} className="player-row">
                 <td className="player-name">
-                    {item.player.id && (
+                    {item.playerId && (
                         <button className="delete-button" onClick={() => onPlayerDelete(index)}>X</button>
                     )}
                     <span className='player-fullname'>{fullName}</span>
                 </td>
                 <td className="player-age">{age || ""}</td>
-                <td className="player-rating">{overallRating || ""}</td>
+                <td className="player-rating">{overall_rating || ""}</td>
             </tr>
         );
     };
 
-    const rows = Array.from({ length: 11 }, (_, index) => data[index] || { player: { lastName: '', overallRating: 0 } });
+    const rows = Array.from({ length: 11 }, (_, index) => data[index] || { player: { playerjerseyname: '', overall_rating: 0 } });
 
     return (
         <div>

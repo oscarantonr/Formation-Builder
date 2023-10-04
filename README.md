@@ -1,10 +1,13 @@
-# Getting Started with Create React App
+# Squad Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+As I am a beginner in React.js and wanted to motivate myself a bit in my first project, my idea was to work on something I liked. 
+While trying different formations while playing FIFA 23, I wondered if it would be difficult to create something similar and faster than the EA SPORTS search engine.
 
-## Available Scripts
-
-In the project directory, you can run:
+## What is it?
+![HomePage]("Home page")
+![alt text](http://url/to/img.png)
+It's very simple. We choose a formation from the list we have in the menu, and it will create the template with eleven spaces to fill. 
+In these spaces, we can click to perform a search and find the player we want.
 
 ### `npm start`
 

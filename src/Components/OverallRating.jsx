@@ -1,19 +1,13 @@
 import React from 'react';
 
 const OverallRating = ({ data }) => {
-    const calculateOverallRating = (statKey) => {
+    const calculateOverall = (statKey) => {
         const overallStat = data.map((item) => item.player[statKey]);
         const totalOverallStat = Math.round(overallStat.reduce((sum, rating) => sum + rating, 0) / data.length);
         return totalOverallStat;
     };
 
-    const calculateOverall = (statKey) => {
-        const overallStat = data.map((item) => item.player.stats[statKey].value);
-        const totalOverallStat = Math.round(overallStat.reduce((sum, rating) => sum + rating, 0) / data.length);
-        return totalOverallStat;
-    };
-
-    const overallRating = calculateOverallRating('overallRating');
+    const overallRating = calculateOverall('overall_rating');
     const overallPac = calculateOverall('pac');
     const overallSho = calculateOverall('sho');
     const overallPas = calculateOverall('pas');
